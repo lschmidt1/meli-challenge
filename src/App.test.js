@@ -1,8 +1,13 @@
-import { render, screen } from '@testing-library/react';
+import { render } from "enzyme"
 import App from './App';
+import { TestScheduler } from "@jest/core";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+describe("<App/>", () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = render(<App />);
+  })
+  test("App renders correctly", () => {
+    expect(wrapper.toBeTruthy)
+  })
+})
