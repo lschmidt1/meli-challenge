@@ -1,0 +1,308 @@
+@import "styleReset";
+
+//FONTS
+@font-face {
+  font-family: "Roboto Light";
+  font-weight: 300;
+  src: url("../styles/fonts/Roboto-Light.ttf");
+}
+@font-face {
+    font-family: "Roboto Medium";
+    src: url("../styles/fonts/Roboto-Medium.ttf");
+  }
+
+// COLORS
+$yellow: #ffe600;
+$black: #333333;
+$blue: #0a2659;
+$lightBlue: #3483FA;
+$white: #fff;
+$gray: #999999;
+$lightGray: #eeeeee;
+$darkGray: #666666;
+$shadow: rgba(0, 0, 0, 0.2);
+$dark_shadow: rgba(0, 0, 0, 0.5);
+
+// FONTS
+$textFont: "Roboto Light";
+$titleFont: "Roboto Medium";
+
+//-------- FONTS --------
+$font: "Roboto Light";
+$h1: 1.5rem;
+$h2: 1.1rem;
+$h3: 1rem;
+$p: 0.9rem;
+
+//-------- SIZES --------
+$headerHeight: 4rem;
+$icon: 2rem;
+$corner: 0.5rem;
+
+//-------- MEDIAQUERIES --------
+$tablet: 768px;
+$desktop: 1024px;
+$desktop_m: 1280px;
+$desktop_xl: 1920px;
+
+//-------- MIXINS MEDIA QUERIES --------
+@mixin phone {
+  @media (max-width: #{$tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet}) and (max-width: #{$desktop - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) and (max-width: #{$desktop_m - 1px}) {
+    @content;
+  }
+}
+
+@mixin devices {
+  @media (max-width: #{$desktop_m - 1px}) {
+    @content;
+  }
+}
+
+@mixin portrait {
+  @media (orientation: portrait) {
+    @content;
+  }
+}
+
+//-------- MIXINS ANIMACIONES --------
+@mixin keyframes($anin_name) {
+  @-webkit-keyframes #{$anin_name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$anin_name} {
+    @content;
+  }
+
+  @-ms-keyframes #{$anin_name} {
+    @content;
+  }
+
+  @-o-keyframes #{$anin_name} {
+    @content;
+  }
+
+  @keyframes #{$anin_name} {
+    @content;
+  }
+}
+
+@mixin animacion($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+@mixin loading_spinner($t: 1rem, $s: $darkBlue, $r: $opaque, $m: 1rem) {
+  width: $t;
+  height: $t;
+  border: $t/5 solid $r;
+  border-radius: 50%;
+  border-top-color: $s;
+  margin: $m;
+  animation: spin 1s ease-in-out infinite;
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+//-------- MIXINS --------
+@mixin flexbox($jc: center, $ai: center, $dir: column) {
+  justify-content: $jc;
+  align-items: $ai;
+
+  @if $dir==row {
+    flex-direction: $dir;
+  }
+}
+
+@mixin button($c: white, $bg: $blue, $hover_c: white, $hover_bg: $lightBlue) {
+  /*  @include toon(); */
+  color: $c;
+  background-color: $bg;
+  align-items: center;
+  border: none;
+  border-radius: 2px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+
+  a {
+    color: $c;
+  }
+
+  @if $hover_c {
+    &:hover {
+      color: $hover_c;
+      background: $hover_bg;
+    }
+  }
+}
+
+@mixin input($bc: $black, $fc: $black) {
+    background: none;
+    border: none;
+    color: $fc;
+    border-style: solid;
+    padding: 8px;
+    border-radius: 2px;
+        font: 400 13.3333px;
+    
+  }
+
+
+//-------- EXTENDS --------
+
+
+%shadow {
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.2)
+}
+
+%card {
+  border-radius: 0.5rem;
+  @extend %shadow;
+  background: #f5f5f5;
+}
+
+%modal_shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $dark_shadow;
+  backdrop-filter: blur(4px);
+  transition: all 1.3s;
+  z-index: 10;
+}
+
+//-------- GLOBAL STYLES --------
+html {
+  scroll-behavior: smooth;
+}
+
+#mainRoutes {
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  background: white;
+  font-family: $textFont;
+  font-size: 0.9rem;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+h1 {
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: $titleFont;
+  color: $white;
+  text-transform: uppercase;
+}
+
+@include tablet() {
+  h1 {
+    font-size: 0.8rem;
+  }
+}
+
+h2 {
+  font-size: 1rem;
+  font-weight: normal;
+  font-family: $textFont;
+}
+
+@include tablet() {
+  h1 {
+    font-size: 0.8rem;
+  }
+}
+
+h6 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 2rem;
+}
+
+button,
+input[type="button"] {
+  @include button();
+  @extend %shadow;
+  justify-content: center;
+}
+
+input,
+input:focus {
+  @include input();
+  @extend %shadow;
+}
+
+select {
+  height: 2.25rem;
+  -moz-appearance: none;
+}
+
+textarea {
+  line-height: 1rem;
+  overflow: hidden;
+}
+
+#errorMsg {
+  font-family: $titleFont;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $white;
+}
+
+.tab_active {
+  color: $blue;
+  border-bottom: 2px solid $blue !important;
+}
+
+.iframeInvisible {
+  display: none;
+}
+
+%ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* CUSTOM SCROLLBAR */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 2px $blue;
+  border-color: $blue;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $lightBlue;
+  border-radius: 3px;
+  &:hover {
+    background: $lightBlue;
+    -webkit-box-shadow: inset 0 0 6px $blue;
+  }
+}
