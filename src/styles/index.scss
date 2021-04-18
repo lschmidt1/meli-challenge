@@ -7,15 +7,15 @@
   src: url("../styles/fonts/Roboto-Light.ttf");
 }
 @font-face {
-    font-family: "Roboto Medium";
-    src: url("../styles/fonts/Roboto-Medium.ttf");
-  }
+  font-family: "Roboto Medium";
+  src: url("../styles/fonts/Roboto-Medium.ttf");
+}
 
 // COLORS
 $yellow: #ffe600;
 $black: #333333;
 $blue: #0a2659;
-$lightBlue: #3483FA;
+$lightBlue: #3483fa;
 $white: #fff;
 $gray: #999999;
 $lightGray: #eeeeee;
@@ -156,22 +156,22 @@ $desktop_xl: 1920px;
 }
 
 @mixin input($bc: $black, $fc: $black) {
-    background: none;
-    border: none;
-    color: $fc;
-    border-style: solid;
-    padding: 8px;
-    border-radius: 2px;
-        font: 400 13.3333px;
-    
+  background: none;
+  border: none;
+  color: $fc;
+  border-style: solid;
+  padding: 8px;
+  border-radius: 2px;
+  font: 400 13.3333px;
+  ::placeholder {
+    color: $lightGray;
   }
-
+}
 
 //-------- EXTENDS --------
 
-
 %shadow {
-  box-shadow: 0 1px 2px 0 rgba(0,0,0,.2)
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
 %card {

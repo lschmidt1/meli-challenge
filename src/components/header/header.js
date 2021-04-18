@@ -9,7 +9,7 @@ function Header() {
     <div id="header">
       <img src={Logo} alt="logo" />
       <form>
-        <input placeholder="Buscar productos, marcas y más..."></input>
+        <input placeholder="Nunca dejes de buscar"></input>
         <button>
           <img src={Search} alt="logo" />
         </button>
