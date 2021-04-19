@@ -1,27 +1,42 @@
-import axios from "axios";
+import axios from '../../axiosConfig/axios/api'
 
 /* REDUCER CONSTS */
 export const GET_SEARCH_RESULTS = "GET_SEARCH_RESULTS";
+export const GET_SEARCH_RESULTS_FAIL = "GET_SEARCH_RESULTS_FAIL";
+export const SET_LOADING_TRUE = "SET_LOADING_TRUE";
+export const SET_LOADING_FALSE = "SET_LOADING_FALSE";
 
 /* DISPATCH FUNCTIONS */
-export const getSearchResultsFn = (searchResults) => ({
+export const getSearchResultsFn = (items, categories) => ({
   type: GET_SEARCH_RESULTS,
-  payload: searchResults,
+  items,
+  categories
+});
+export const getSearchResultsFailFn = (error) => ({
+  type: GET_SEARCH_RESULTS_FAIL,
+  error,
+});
+export const setLoadingTrueFn = () => ({
+  type: SET_LOADING_TRUE,
+});
+export const setLoadingFalseFn = () => ({
+  type: SET_LOADING_FALSE,
 });
 
 /* ACTION FUNCTIONS */
 export function getSearchResults(searchValue) {
-/*   return (dispatch) => {
-    if (menu.menuHref !== "" && menu.menuHref) {
-      return axios({
-        url:
-          process.env.REACT_APP_BACKEND_URL +
-          `home/users/menuitems/getUserInformation?url=${menu.menuHref}Country=${country}%26PlanYear=${year}%26CustomerId=${customerID}`,
-        headers,
-        method: "GET",
+  return (dispatch) => {
+    dispatch(setLoadingTrueFn());
+    return axios
+      .get(`/api/items?q=${searchValue}`)
+      .then((res) => {
+        dispatch(setLoadingFalseFn());
+        dispatch(getSearchResultsFn(res.data.items, res.data.categories));
+        /*  setCategories(res.data.categories); */
       })
-        .then((response) => dispatch(changeMenu(menu, response.data)))
-        .catch((error) => dispatch(changeMenu(menu)));
-    }
-  }; */
+      .catch((err) => {
+        dispatch(setLoadingFalseFn());
+        dispatch(getSearchResultsFailFn(err));
+      });
+  };
 }

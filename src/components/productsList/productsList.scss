@@ -1,0 +1,10 @@
+@import "../../styles/index.scss";
+
+#productsList {
+  @include flexbox(center, center, row);
+  height: calc(100vh - 4rem);
+  overflow: auto;
+  ul{
+      height: 100%;
+  }
+}
