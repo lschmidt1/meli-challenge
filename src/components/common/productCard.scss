@@ -9,15 +9,15 @@
       @include flexbox(center, center, row);
       img {
         margin-left: 1rem;
-        width: 1rem;
+        width: 1.4rem;
       }
     }
     div:nth-child(2) {
       @include flexbox(center, flex-start, column);
       margin-top: 2rem;
-      p:nth-child(2){
-          margin-top: .4rem;
-          color: $gray;
+      p:nth-child(2) {
+        margin-top: 0.4rem;
+        color: $gray;
       }
     }
   }

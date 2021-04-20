@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductCard /> should render correctly by matching snapshot 1`] = `
+Object {
+  "length": 0,
+  "options": Object {
+    "decodeEntities": true,
+    "xml": false,
+  },
+}
+`;

@@ -4,16 +4,15 @@ import Header from "../header";
 describe("<Header />", () => {
   describe("should render correctly", () => {
     test("by matching snapshot", () => {
-      const { container } = render(<Header />);
-      expect(container).toMatchSnapshot();
+      const component = shallow(<Header />);
+      expect(component).toMatchSnapshot();
     });
   });
-  test("button click should execute onSubmit function", () => {
+  test("button click should execute function", () => {
     const clickFn = jest.fn();
     const component = shallow(<button onClick={clickFn}></button>);
-    expect(component.find("button").exists()).toBe(true);
-    component.find("button").simulate("click");
-    expect(clickFn).toHaveBeenCalled();
+    component.find("button").props().onClick();
+    expect(clickFn).toHaveBeenCalledTimes(1);
   });
 });
 

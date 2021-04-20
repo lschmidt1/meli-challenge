@@ -1,11 +1,8 @@
 import { React, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { withRouter } from "react-router-dom";
 import { getSearchResults } from "../../redux/actions/productsActions";
 import Loading from "../common/loading";
 import ProductCard from "../common/productCard";
-import "./productsList.scss";
-
 import "./productsList.scss";
 
 function ProductsList(props) {
@@ -21,8 +18,12 @@ function ProductsList(props) {
   const isError = useSelector((state) => state.productsReducer.productsError);
 
   useEffect(() => {
-    const query = new URLSearchParams(props.location.search);
-    const search = query.get("search");
+      let query
+      let search
+    if (props.location) {
+      query = new URLSearchParams(props.location.search);
+      search = query.get("search");
+    }
     if (search) {
       setSearchValue(search);
     }
@@ -54,4 +55,4 @@ function ProductsList(props) {
   );
 }
 
-export default withRouter(ProductsList);
+export default ProductsList;

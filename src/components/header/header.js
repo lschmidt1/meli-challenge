@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import Search from "../../styles/assets/ic_Search.png";
-import Logo from "../../styles/assets/Logo_ML.png";
+import Search from "../../styles/assets/ic_Search@2x.png";
+import Logo from "../../styles/assets/Logo_ML@2x.png";
 
 import "./header.scss";
 
