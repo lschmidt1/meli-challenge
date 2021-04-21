@@ -1,9 +1,12 @@
 import { shallow } from "enzyme";
 import App from "./App";
-import { TestScheduler } from "@jest/core";
+import { render, fireEvent, screen } from "./test-utils";
 
 describe("<App/>", () => {
-  test("App renders without crashing", () => {
-    const wrapper = shallow(<App />);
+  describe("App renders without crashing", () => {
+    const component = render(<App />);
+    test("by matching snapshot", () => {
+      expect(component).toMatchSnapshot();
+    });
   });
 });

@@ -1,61 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Header /> should render correctly by matching snapshot 1`] = `
+exports[`<Breadcrumbs /> should render correctly by matching snapshot 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <div
-        id="header"
-      >
-        <img
-          alt="logo"
-          src="Logo_ML@2x.png"
-        />
-        <form>
-          <input
-            data-testid="searchInput"
-            placeholder="Nunca dejes de buscar"
-            role="searchInput"
-            value=""
-          />
-          <button
-            role="submitButton"
-          >
-            <img
-              alt="logo"
-              src="ic_Search@2x.png"
-            />
-          </button>
-        </form>
-      </div>
+        id="breadcrumbs"
+        role="container"
+      />
     </div>
   </body>,
   "container": <div>
     <div
-      id="header"
-    >
-      <img
-        alt="logo"
-        src="Logo_ML@2x.png"
-      />
-      <form>
-        <input
-          data-testid="searchInput"
-          placeholder="Nunca dejes de buscar"
-          role="searchInput"
-          value=""
-        />
-        <button
-          role="submitButton"
-        >
-          <img
-            alt="logo"
-            src="ic_Search@2x.png"
-          />
-        </button>
-      </form>
-    </div>
+      id="breadcrumbs"
+      role="container"
+    />
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

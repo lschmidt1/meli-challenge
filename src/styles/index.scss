@@ -133,13 +133,18 @@ $desktop_xl: 1920px;
   }
 }
 
-@mixin button($c: white, $bg: $blue, $hover_c: white, $hover_bg: $lightBlue) {
+@mixin button(
+  $c: white,
+  $bg: $lightBlue,
+  $hover_c: white,
+  $hover_bg: $lightBlue
+) {
   /*  @include toon(); */
   color: $c;
   background-color: $bg;
   align-items: center;
   border: none;
-  border-radius: 2px;
+  border-radius: 6px;
   padding: 0.5rem 1rem;
   cursor: pointer;
 
@@ -204,20 +209,24 @@ html {
 }
 
 body {
-  background: white;
+  background: $lightGray;
   font-family: $textFont;
+  word-break: break-word;
   font-size: 0.9rem;
   overflow-x: hidden;
   overflow-y: hidden;
 }
 
 h1 {
-  font-size: 1.3rem;
+  font-weight: 300;
+  line-height: 1.18;
+  font-size: 1.5rem;
   font-family: $titleFont;
-  text-transform: uppercase;
 }
 
 h2 {
+  font-weight: 600;
+  line-height: 1.18;
   font-size: 1.12rem;
   font-weight: normal;
   font-family: $textFont;
@@ -225,6 +234,7 @@ h2 {
 
 p {
   font-size: 1rem;
+  line-height: 1.18;
   font-family: $textFont;
 }
 
@@ -254,4 +264,18 @@ input:focus {
   height: 11.25rem;
   border-radius: 0.25rem;
   margin: 2rem 1rem 2rem 1rem;
+  object-fit: cover;
+}
+
+.productImageLarge {
+  @extend .productImage;
+  width: 20.25rem;
+  height: 20.25rem;
+}
+
+.interactiveButton {
+  width: 11.5rem;
+  height: 2.5rem;
+  font-family: $titleFont;
+  background: $lightBlue;
 }

@@ -1,40 +1,24 @@
-import { shallow, mount, render } from "enzyme";
+import { shallow, mount } from "enzyme";
+import { render, fireEvent, screen } from "../../../test-utils";
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
 import ProductCard from "../productCard";
 
 describe("<ProductCard />", () => {
-  let component;
-
-  beforeEach(() => {
-    component = render(
-      <BrowserRouter>
-        <ProductCard />
-      </BrowserRouter>
-    );
-  });
   describe("should render correctly", () => {
     test("by matching snapshot", () => {
+      const component = render(<ProductCard />);
       expect(component).toMatchSnapshot();
     });
   });
 
   it("doesn't render without props", () => {
-    component = mount(
-      <BrowserRouter>
-        <ProductCard />
-      </BrowserRouter>
-    );
-    expect(component.find("#productCard").exists()).toBe(false);
+    render(<ProductCard />);
+    expect(screen.queryByRole("body")).toBeNull();
   });
 
   it("renders with product props", () => {
     const product = {};
-    component = mount(
-      <BrowserRouter>
-        <ProductCard product={product} />
-      </BrowserRouter>
-    );
-    expect(component.find("#productCard").exists()).toBe(true);
+    render(<ProductCard product={product} />);
+    expect(screen.queryByRole("body")).toBeInTheDocument();
   });
 });

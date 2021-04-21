@@ -9,7 +9,7 @@ function Header(props) {
   /* GET SEARCH VALUE FROM URL */
   const query = new URLSearchParams(props.location.search);
   const search = query.get("search");
-/* SET VALUE IF FOUND IN URL, ELSE START EMPTY*/
+  /* SET VALUE IF FOUND IN URL, ELSE START EMPTY*/
   const [searchValue, setSearchValue] = useState(search || "");
 
   function handleSearchProducts(e) {
@@ -24,11 +24,13 @@ function Header(props) {
       <img src={Logo} alt="logo" />
       <form onSubmit={(e) => handleSearchProducts(e)}>
         <input
+          data-testid="searchInput"
+          role="searchInput"
           placeholder="Nunca dejes de buscar"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
         ></input>
-        <button onClick={(e) => handleSearchProducts(e)}>
+        <button role="submitButton" onClick={(e) => handleSearchProducts(e)}>
           <img src={Search} alt="logo" />
         </button>
       </form>

@@ -2,7 +2,9 @@
 
 #productCard {
   @include flexbox(flex-start, center, row);
-  width: 45rem;
+  margin-top: 2px;
+  background: $white;
+  width: 35rem;
   > div {
     @include flexbox(center, flex-start, column);
     div:nth-child(1) {
@@ -15,6 +17,9 @@
     div:nth-child(2) {
       @include flexbox(center, flex-start, column);
       margin-top: 2rem;
+      h2{
+          margin-right: 2rem;
+      }
       p:nth-child(2) {
         margin-top: 0.4rem;
         color: $gray;

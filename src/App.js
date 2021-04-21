@@ -1,6 +1,7 @@
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Header from "./components/header/header";
 import ProductsList from "./components/productsList/productsList";
+import ProductDetail from "./components/productDetail/productDetail";
 import "./styles/index.scss";
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/items" component={ProductsList} />
-        {/* <Route exact path="/items/:id" component={ProductDetail} /> */}
+        <Route exact path="/items/:id" component={ProductDetail} />
       </Switch>
     </BrowserRouter>
   );
