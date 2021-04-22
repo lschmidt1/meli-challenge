@@ -5,23 +5,41 @@
   margin-top: 2px;
   background: $white;
   width: 80%;
-  @include phone{
-    width: 100%
+  @include phone {
+    width: 100%;
   }
   > div {
     @include flexbox(center, flex-start, column);
-    div:nth-child(1) {
-      @include flexbox(center, center, row);
-      img {
-        margin-left: 1rem;
-        width: 1.4rem;
+    @include phone {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    > div:nth-child(1) {
+      @include flexbox(space-between, center, row);
+      width: 100%;
+      @include phone{
+       flex-direction: column; 
+       width: unset;
+      }
+      > div {
+        @include flexbox(space-between, center, row);
+        img {
+          margin-left: .5rem;
+          width: 1.4rem;
+        }
+      }
+      p {
+        margin-right: 1rem;
+        font-size: 0.75rem;
+        margin-top: 0.4rem;
+        color: $gray;
       }
     }
     div:nth-child(2) {
       @include flexbox(center, flex-start, column);
       margin-top: 2rem;
-      h2{
-          margin-right: 2rem;
+      h2 {
+        margin-right: 2rem;
       }
       p:nth-child(2) {
         margin-top: 0.4rem;

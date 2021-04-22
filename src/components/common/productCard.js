@@ -17,10 +17,17 @@ function ProductCard(props) {
         </Link>
         <div role="body">
           <div>
-            <h1> {getPrice(product)}</h1>
-            {product.free_shipping ? (
-              <img src={Ship} title={"Envio gratis"} alt={"Envio gratis"}></img>
-            ) : null}
+            <div>
+              <h1> {getPrice(product)}</h1>
+              {product.free_shipping ? (
+                <img
+                  src={Ship}
+                  title={"Envio gratis"}
+                  alt={"Envio gratis"}
+                ></img>
+              ) : null}
+            </div>
+            <p>{product.state}</p>
           </div>
           <div>
             <Link to={link}>

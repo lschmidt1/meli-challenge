@@ -231,15 +231,20 @@ input:focus {
   height: 11.25rem;
   border-radius: 0.25rem;
   margin: 2rem 1rem 2rem 1rem;
-  object-fit: cover;
+  object-fit: contain;
+  @include phone {
+    width: 7.25rem;
+    height: 7.25rem;
+  }
 }
 
 .productImageLarge {
   @extend .productImage;
-  width: 20.25rem;
-  height: 20.25rem;
+  height: auto;
+  width: auto;
+  max-width: 55%;
   @include phone {
-    max-width: 12.25rem;
+    max-width: 60%;
   }
 }
 

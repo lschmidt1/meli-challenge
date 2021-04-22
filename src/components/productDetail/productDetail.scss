@@ -12,15 +12,15 @@
       width: 80%;
     }
     @include phone() {
+      flex-direction: column;
       width: 100%;
+      
     }
 
     > div {
       align-self: flex-start;
       margin: 2rem;
-      @include phone() {
-        margin-left: 0;
-      }
+      max-width: 40%;
       p {
         color: $gray;
         font-size: 0.8rem;
@@ -36,8 +36,13 @@
       > button {
         margin-top: 2rem;
         @include phone{
-          width: unset;
+          width: 100%;
         }
+      }
+      @include phone{
+        width: 90%;
+        max-width: unset;
+        margin: 1rem;
       }
     }
   }
