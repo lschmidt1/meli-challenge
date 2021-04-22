@@ -4,7 +4,10 @@
   @include flexbox(flex-start, center, row);
   margin-top: 2px;
   background: $white;
-  width: 35rem;
+  width: 80%;
+  @include phone{
+    width: 100%
+  }
   > div {
     @include flexbox(center, flex-start, column);
     div:nth-child(1) {

@@ -9,11 +9,10 @@ import "./productDetail.scss";
 
 const ProductDetail = (props) => {
   const dispatch = useDispatch();
-  const [searchValue, setSearchValue] = useState("");
 
   const product = useSelector((state) => state.productsReducer.productDetail);
   const categoriesList = useSelector(
-    (state) => state.productsReducer.productDetailCategories
+    (state) => state.productsReducer.productCategories
   );
   const isLoading = useSelector(
     (state) => state.productsReducer.productsLoading
@@ -28,15 +27,30 @@ const ProductDetail = (props) => {
     }
   }, [id]);
 
-  let productDetail = <Loading />;
-  let breadcrumb = null;
-
+  if (isLoading) {
+    return (
+      <div id="productDetail">
+        <Loading />
+      </div>
+    );
+  }
+  if (isError) {
+    return (
+      <div id="productDetail">
+        <h1>ERROR</h1>
+      </div>
+    );
+  }
   if (product) {
     return (
       <div id="productDetail">
         <Breadcrumbs categories={categoriesList} />
         <div className="productBody">
-          <img className="productImageLarge" src={product.picture} alt="Image" />
+          <img
+            className="productImageLarge"
+            src={product.picture}
+            alt="Image"
+          />
           <div>
             <p>
               {product.condition + " "} - {" " + product.sold_quantity} vendidos
@@ -52,7 +66,7 @@ const ProductDetail = (props) => {
         </div>
       </div>
     );
-  } else return "";
+  }
 };
 
 export default withRouter(ProductDetail);

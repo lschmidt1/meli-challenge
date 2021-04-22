@@ -2,20 +2,22 @@
 
 #productDetail {
   @include flexbox(center, center, column);
+  margin-bottom: 2rem;
   width: 100%;
-  height: calc(100vh - 4rem);
-  overflow: auto;
   .productBody {
     background: $white;
     @include flexbox(space-between, center, row);
     width: 65%;
-    @include tablet() {
-      width: 65%;
+    @include phone() {
+      width: 100%;
     }
 
     > div {
       align-self: flex-start;
       margin: 2rem;
+      @include phone() {
+        margin-left: 0;
+      }
       p {
         color: $gray;
         font-size: 0.8rem;
@@ -36,13 +38,17 @@
   .productFooter {
     background: $white;
     width: 65%;
+    @include phone() {
+      width: 100%;
+    }
     h2 {
       font-family: $titleFont;
       margin: 2rem;
       margin-bottom: 1rem;
     }
     p {
-        color: $gray;
+      width: 80%;
+      color: $gray;
       margin: 2rem;
       margin-top: 0;
     }

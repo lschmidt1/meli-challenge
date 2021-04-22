@@ -76,29 +76,6 @@ $desktop_xl: 1920px;
   }
 }
 
-//-------- MIXINS ANIMACIONES --------
-@mixin keyframes($anin_name) {
-  @-webkit-keyframes #{$anin_name} {
-    @content;
-  }
-
-  @-moz-keyframes #{$anin_name} {
-    @content;
-  }
-
-  @-ms-keyframes #{$anin_name} {
-    @content;
-  }
-
-  @-o-keyframes #{$anin_name} {
-    @content;
-  }
-
-  @keyframes #{$anin_name} {
-    @content;
-  }
-}
-
 @mixin animacion($str) {
   -webkit-animation: #{$str};
   -moz-animation: #{$str};
@@ -133,13 +110,7 @@ $desktop_xl: 1920px;
   }
 }
 
-@mixin button(
-  $c: white,
-  $bg: $lightBlue,
-  $hover_c: white,
-  $hover_bg: $lightBlue
-) {
-  /*  @include toon(); */
+@mixin button($c: white, $bg: $lightBlue, $hover_c: white, $hover_bg: $blue) {
   color: $c;
   background-color: $bg;
   align-items: center;
@@ -157,6 +128,7 @@ $desktop_xl: 1920px;
       color: $hover_c;
       background: $hover_bg;
     }
+    transition: box-shadow 0.25s ease-out, background-color 0.2s ease-out;
   }
 }
 
@@ -165,7 +137,7 @@ $desktop_xl: 1920px;
   border: none;
   color: $fc;
   border-style: solid;
-  padding: 8px;
+  padding: 7px 60px 9px 15px;
   border-radius: 2px;
   font: 400 13.3333px;
   font-size: 1.12rem;
@@ -203,18 +175,13 @@ html {
   scroll-behavior: smooth;
 }
 
-#mainRoutes {
-  display: flex;
-  flex-direction: column;
-}
-
 body {
   background: $lightGray;
   font-family: $textFont;
   word-break: break-word;
   font-size: 0.9rem;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 
 h1 {
@@ -271,6 +238,9 @@ input:focus {
   @extend .productImage;
   width: 20.25rem;
   height: 20.25rem;
+  @include phone {
+    max-width: 12.25rem;
+  }
 }
 
 .interactiveButton {

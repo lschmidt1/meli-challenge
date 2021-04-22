@@ -41,25 +41,32 @@ function ProductsList(props) {
     }
   }, [searchValue]);
 
-  return (
-    <div id="productsList">
-      <Breadcrumbs categories={categoriesList}/>
-      {/* PRODUCTS LIST LOADING */}
-      {isLoading ? <Loading /> : ""}
-      {/* PRODUCTS LIST ERROR */}
-      {isError ? <h1>ERROR</h1> : ""}
-      {/* PRODUCTS LIST LOADED */}
-      {productsList.length > 0 && !isLoading && !isError ? (
+  if (isLoading) {
+    return (
+      <div id="productsList">
+        <Loading />
+      </div>
+    );
+  }
+  if (isError) {
+    return (
+      <div id="productsList">
+        <h1>ERROR</h1>
+      </div>
+    );
+  }
+  if (productsList) {
+    return (
+      <div id="productsList">
+        <Breadcrumbs categories={categoriesList} />
         <ul role="productsList">
           {productsList.map((product, idx) => (
             <ProductCard key={idx} product={product} />
           ))}
         </ul>
-      ) : (
-        ""
-      )}
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default ProductsList;

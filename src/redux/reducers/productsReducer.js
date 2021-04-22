@@ -12,6 +12,7 @@ const initialState = {
   searchResults: [],
   searchCategories: [],
   productDetail: [],
+  productCategories: [],
   productsLoading: false,
   productsError: false,
 };
@@ -24,6 +25,7 @@ export default function homeReducer(state = initialState, action) {
         ...state,
         searchResults: action.items,
         searchCategories: action.categories,
+        productDetail: [],
         productsError: false,
       };
 
