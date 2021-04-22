@@ -13,7 +13,7 @@ const Breadcrumbs = () => {
           if (i + 1 === categories.length) {
             return <p role="breadText" key={i}> {category}</p>;
           } else {
-            return <p role="breadText">{category}&nbsp;&nbsp;&nbsp;&gt;</p>;
+            return <div><p>{category}&nbsp;&nbsp;</p><p>&gt;</p></div>;
           }
         })}
       </div>

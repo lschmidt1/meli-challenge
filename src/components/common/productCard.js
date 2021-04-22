@@ -31,7 +31,7 @@ function ProductCard(props) {
           </div>
           <div>
             <Link to={link}>
-              <h2> {product.title}</h2>
+              <h2 title={product.title}> {product.title}</h2>
             </Link>
             <p>{product.condition}</p>
           </div>

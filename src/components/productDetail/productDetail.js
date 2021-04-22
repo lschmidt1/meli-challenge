@@ -5,6 +5,7 @@ import Breadcrumbs from "../common/breadcrumbs";
 import Loading from "../common/loading";
 import { getPrice } from "../common/helpers";
 import { getProductDetail } from "../../redux/actions/productsActions";
+import ErrorPage from "../common/errorPage";
 import "./productDetail.scss";
 
 const ProductDetail = (props) => {
@@ -35,11 +36,7 @@ const ProductDetail = (props) => {
     );
   }
   if (isError) {
-    return (
-      <div id="productDetail">
-        <h1>ERROR</h1>
-      </div>
-    );
+    return <ErrorPage />;
   }
   if (product) {
     return (

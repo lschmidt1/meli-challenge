@@ -4,6 +4,7 @@ import { getSearchResults } from "../../redux/actions/productsActions";
 import Loading from "../common/loading";
 import Breadcrumbs from "../common/breadcrumbs";
 import ProductCard from "../common/productCard";
+import ErrorPage from "../common/errorPage";
 import "./productsList.scss";
 
 function ProductsList(props) {
@@ -49,11 +50,7 @@ function ProductsList(props) {
     );
   }
   if (isError) {
-    return (
-      <div id="productsList">
-        <h1>ERROR</h1>
-      </div>
-    );
+    return <ErrorPage />;
   }
   if (productsList) {
     return (
