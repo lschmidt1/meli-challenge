@@ -6,8 +6,11 @@
   width: 100%;
   .productBody {
     background: $white;
-    @include flexbox(space-between, center, row);
+    @include flexbox(flex-start, center, row);
     width: 65%;
+    @include tablet() {
+      width: 80%;
+    }
     @include phone() {
       width: 100%;
     }
@@ -32,12 +35,18 @@
       }
       > button {
         margin-top: 2rem;
+        @include phone{
+          width: unset;
+        }
       }
     }
   }
   .productFooter {
     background: $white;
     width: 65%;
+    @include tablet() {
+      width: 80%;
+    }
     @include phone() {
       width: 100%;
     }
